@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style id="st_sheet">
+        .inp{
+            display: flex;
+    align-items: center;
+    justify-content: center;
+            position: fixed;
+            top: 1%;
+            left: 21.5vw;
+            width: calc((100% - 18.5vw - 3vw - 4vw) / 3);
+            height: 18.5vw;
+            border: none;
+            border-top-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            background-color: white;
+            font-size: 1rem;
+            text-align: center;
+            font-family: fnt2;
+        }
+        .sura_n{
+            display: flex;
+    align-items: center;
+    justify-content: center;
+            position: fixed;
+            top: 1%;
+            left: calc(21.5vw + calc((100% - 18.5vw - 3vw - 4vw) / 3) + 2vw ) ;
+            width: calc((100% - 18.5vw - 3vw - 4vw) / 3);
+            height: 18.5vw;
+            border: none;
+            border-top-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            background-color: white;
+            font-family: fnt2;
+            font-size: 3rem;
+            text-align: center;
+        }
+        .audio{
+            position: fixed;
+            top: 1%;
+            left: calc(21.5vw + calc((100% - 18.5vw - 3vw - 4vw) / 3) + 4vw + calc((100% - 18.5vw - 3vw - 4vw) / 3)) ;
+            width: calc((100% - 18.5vw - 3vw - 4vw) / 3);
+            height: 18.5vw;
+            border: none;
+            border-top-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            background-color: rgb(97, 89, 89);
+           
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        body{
+            background-color: goldenrod;
+        }
+        .sura{
+            top: 20%;
+            left: 0%;
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            height: auto;
+            font-size: 100px;
+            font-family: fnt2;
+            background-color: mediumseagreen;
+            color: black;
+            border: none;
+            border-radius: 20px;
+            z-index: -5;
+        }
+     
+       
+        .zeena{
+            z-index: -2;
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            height:calc(18.5vw + 2vh);
+            width: 100%;
+            border-bottom: 20px;
+            background-color: #521280;
+        }
+        .men{
+            left: 1vw;
+            top: 1vh;
+            position: fixed;
+            width:  18.5vw;
+            height: 18.5vw;
+            background-color:aqua ;
+            background-image: url('men.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:contain;
+            border-radius: 1rem;
+            z-index: 20;
+        
+        }
+        .home{
+            left:21.5vw ;
+            top: 1vh;
+            position: fixed;
+            width:  18.5vw;
+            height:  18.5vw;
+            background-color:aqua ;
+            background-image: url('home.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:contain;
+            border-radius: 1rem;
+        }
+        .menu{
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            height: 100%;
+            width: 100%;
+            background-color: rgb(54, 51, 51);
+            z-index: 0;
+        }
+        ul{
+            position: absolute;
+            top: calc(1vh + 18.5vw);
+            left: 1vw;
+            width: auto;
+            height: auto;
+            font-family: fnt2;
+            font-size: 5rem;
+            color: orangered;
+            display: grid;
+            grid-row-gap:auto;
+        }
+        ul >li::marker{
+            color: gray;
+        }
+       
+        @font-face {
+            font-family: fnt2;
+            src: url("4.ttf");
+        }
+        /*____________________________________________*/
+        .dd{
+            position:relative;
+            border-radius: 20px;
+            width: auto;
+            height: auto;
+            background-color: aqua;
+            display: flex;
+            opacity: 1;
+  flex-wrap: wrap;
+  gap: 1rem;
+        }
+        .li_o *:not(.dd , .l):hover{
+            background-color: aliceblue;
+        }
+        .m:active{
+            background-color: white;
+        }
+        .menu * , .menu ,.eldiv_elli_malhash_lazma{animation: 0s disapperance forwards ;}
+        @keyframes disapperance {
+            100%{
+                width: 0;
+                height: 0;
+                opacity: 0;
+            }
+        }
+        .b{
+            opacity: 1;
+            top: 0%;
+            left: 10%;
+            position:relative;
+            width: 80%;
+            height: 80%;
+            border-radius: 100%;
+            background-repeat: no-repeat;
+            background-size:cover ;
+            background-position: center;
+            &.yas_dos{
+                background-image:url('yas_dos.jpg');
+            }
+             &.elhos{
+                background-image:url('elhos.jpg');
+            }
+            &.abd_abd{
+                background-image:url('abd_abd.jpg') ;
+            }
+           
+        }
+        .l{
+            bottom: 0%;
+            left: 0%;
+            position:absolute;
+            text-align: center;
+
+            width: 100%;
+            height: 18%;
+            box-sizing: content-box;
+            font-size:2rem ;
+            color:darkslategrey;
+            background-color: goldenrod;
+            border-top-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+        }
+        .d{
+            position: relative;
+            border-radius: 20px;
+            background-color: rgb(15, 160, 160);
+            width: 12rem;
+            height: 12rem;
+
+        }
+        /*_________________________________________________________*/
+        .unscroller{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: calc(5vh + 18.5vw);
+            background-color: rgb(49, 44, 44);
+            z-index: 1;
+        }
+        .eldiv_elli_malhash_lazma{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left:0;
+            background-color: rgb(54, 51, 51) ;
+            z-index: -1;
+
+        }
+        .m{
+            position: relative;
+                opacity: 1;
+            width: 12rem;
+            height: 2rem;
+            box-sizing: content-box;
+            font-size:2rem ;
+            color:darkslategrey;
+            background-color: goldenrod;
+            border-top-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            text-align: center;
+
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div class="zeena" id="zeena"></div>
+   
+    
+    <video controls  id="audio" class="audio"></video>
+   
+   <div id="inp" class="inp"></div>
+        <div class="sura_n" id="sura_n"></div>
+    <div class="sura" id="sura"></div>
+    <div class="menu" id="menu"><div class="unscroller"><button class="home" id="home"></button></div>
+    <ul>
+        <li class="li_o" id="li_o">القراء -<div class="dd o" id="dd_o">
+          
+          <div id="yas_dos_d" class="d yas_dos">  <button id="yas_dos" class="b yas_dos"></button><div id="yas_dos_lab" class="l yas_dos">ياسر الدوسرى</div></div>
+
+
+          <div id="elhos_d" class="d elhos">  <button id="elhos" class="b elhos"></button><div id="elhos_lab" class="l elhos">الحصرى</div></div>
+
+
+          <div id="abd_abd_d" class="d abd_abd">  <button id="abd_abd" class="b abd_abd"></button><div id="abd_abd_lab" class="l abd_abd">عبد الباسط عبد الصمد</div></div>
+         
+        
+        </div></li>
+        <li class="li_t" id="li_t">السور -<dive class="dd t" id="dd_t">
+            <div id="s_1" class="m s_1">الفاتحة
+        </div>
+
+        <div id="s_2" class="m s_2">البقرة
+        </div>
+
+        <div id="s_3" class="m s_3">ال عمران
+        </div>
+
+        <div id="s_4" class="m s_4">النساء
+        </div>
+
+        <div id="s_5" class="m s_5">المائدة
+        </div>
+
+        <div id="s_6" class="m s_6">الأنعام
+        </div>
+
+        <div id="s_7" class="m s_7">الأعراف
+        </div>
+
+        <div id="s_8" class="m s_8">الأنفال
+        </div>
+
+        <div id="s_9" class="m s_9">التوبة
+        </div>
+
+        <div id="s_10" class="m s_10">يونس
+        </div>
+
+        <div id="s_11" class="m s_11">هود
+        </div>
+
+        <div id="s_12" class="m s_12">يوسف
+        </div>
+
+        <div id="s_13" class="m s_13">الرعد
+        </div>
+
+        <div id="s_14" class="m s_14">ابراهيم
+        </div>
+
+        <div id="s_15" class="m s_15">الحجر
+        </div>
+
+        <div id="s_16" class="m s_16">النحل
+        </div>
+
+        <div id="s_17" class="m s_17">الاسراء
+        </div>
+
+        <div id="s_18" class="m s_18">الكهف
+        </div>
+
+        <div id="s_19" class="m s_19">مريم
+        </div>
+
+        <div id="s_20" class="m s_20">طه
+        </div>
+
+        <div id="s_21" class="m s_21">الأنبياء
+        </div>
+
+        <div id="s_22" class="m s_22">الحج
+        </div>
+
+        <div id="s_23" class="m s_23">المؤمنون
+        </div>
+
+        <div id="s_24" class="m s_24">النور
+        </div>
+
+        <div id="s_25" class="m s_25">الفرقان
+        </div>
+
+        <div id="s_26" class="m s_26">الشعراء
+        </div>
+
+        <div id="s_27" class="m s_27">النمل
+        </div>
+
+        <div id="s_28" class="m s_28">القصص
+        </div>
+
+        <div id="s_29" class="m s_29">العنكبوت
+        </div>
+
+        <div id="s_30" class="m s_30">الروم
+        </div>
+
+        <div id="s_31" class="m s_31">لقمان
+        </div>
+
+        <div id="s_32" class="m s_32">السجدة
+        </div>
+
+        <div id="s_33" class="m s_33">الأحزاب
+        </div>
+
+        <div id="s_34" class="m s_34">سبأ
+        </div>
+
+        <div id="s_35" class="m s_35">فاطر
+        </div>
+
+        <div id="s_36" class="m s_36">يس
+        </div>
+
+        <div id="s_37" class="m s_37">الصافات
+        </div>
+
+        <div id="s_38" class="m s_38">ص
+        </div>
+
+        <div id="s_39" class="m s_39">الزمر
+        </div>
+
+        <div id="s_40" class="m s_40">غافر
+        </div>
+
+        <div id="s_41" class="m s_41">فصلت
+        </div>
+
+        <div id="s_42" class="m s_42">الشورى
+        </div>
+
+        <div id="s_43" class="m s_43">الزخرف
+        </div>
+
+        <div id="s_44" class="m s_44">الدخان
+        </div>
+
+        <div id="s_45" class="m s_45">الجاشية
+        </div>
+
+        <div id="s_46" class="m s_46">الأحقاف
+        </div>
+
+        <div id="s_47" class="m s_47">محمد
+        </div>
+
+        <div id="s_48" class="m s_48">الفتح
+        </div>
+
+        <div id="s_49" class="m s_49">الحجرات
+        </div>
+
+        <div id="s_50" class="m s_50">ق
+        </div>
+
+        <div id="s_51" class="m s_51">الذاريات
+        </div>
+
+        <div id="s_52" class="m s_52">الطور
+        </div>
+
+        <div id="s_53" class="m s_53">النجم
+        </div>
+
+        <div id="s_54" class="m s_54">القمر
+        </div>
+
+        <div id="s_55" class="m s_55">الرحمن
+        </div>
+
+        <div id="s_56" class="m s_56">الواقعة
+        </div>
+
+        <div id="s_57" class="m s_57">الحديد
+        </div>
+
+        <div id="s_58" class="m s_58">المجادلة
+        </div>
+
+        <div id="s_59" class="m s_59">الحشر
+        </div>
+
+        <div id="s_60" class="m s_60">الممتحنة
+        </div>
+
+        <div id="s_61" class="m s_61">الصف
+        </div>
+
+        <div id="s_62" class="m s_62">الجمعة
+        </div>
+
+        <div id="s_63" class="m s_63">المنافقون
+        </div>
+
+        <div id="s_64" class="m s_64">التغابن
+        </div>
+
+        <div id="s_65" class="m s_65">الطلاق
+        </div>
+
+        <div id="s_66" class="m s_66">التحريم
+        </div>
+
+        <div id="s_67" class="m s_67">الملك
+        </div>
+
+        <div id="s_68" class="m s_68">القلم
+        </div>
+
+        <div id="s_69" class="m s_69">الحاقة
+        </div>
+
+        <div id="s_70" class="m s_70">المعارج
+        </div>
+
+        <div id="s_71" class="m s_71">نوح
+        </div>
+
+        <div id="s_72" class="m s_72">الجن
+        </div>
+
+        <div id="s_73" class="m s_73">المزمل
+        </div>
+
+        <div id="s_74" class="m s_74">المدثر
+        </div>
+
+        <div id="s_75" class="m s_75">القيامة
+        </div>
+
+        <div id="s_76" class="m s_76">الانسان
+        </div>
+
+        <div id="s_77" class="m s_77">المرسلات
+        </div>
+
+        <div id="s_78" class="m s_78">النبأ
+        </div>
+
+        <div id="s_79" class="m s_79">النازعات
+        </div>
+
+        <div id="s_80" class="m s_80">عبس
+        </div>
+
+        <div id="s_81" class="m s_81">التكوير
+        </div>
+
+        <div id="s_82" class="m s_82">الانفطار
+        </div>
+
+        <div id="s_83" class="m s_83">المطففين
+        </div>
+
+        <div id="s_84" class="m s_84">الانشقاق
+        </div>
+
+        <div id="s_85" class="m s_85">البروج
+        </div>
+
+        <div id="s_86" class="m s_86">الطارق
+        </div>
+
+        <div id="s_87" class="m s_87">الأعلى
+        </div>
+
+        <div id="s_88" class="m s_88">الغاشية
+        </div>
+
+        <div id="s_89" class="m s_89">الفجر
+        </div>
+
+        <div id="s_90" class="m s_90">البلد
+        </div>
+
+        <div id="s_91" class="m s_91">الشمس
+        </div>
+
+        <div id="s_92" class="m s_92">الليل
+        </div>
+
+        <div id="s_93" class="m s_93">الضحى
+        </div>
+
+        <div id="s_94" class="m s_94">الشرح
+        </div>
+
+        <div id="s_95" class="m s_95">التين
+        </div>
+
+        <div id="s_96" class="m s_96">العلق
+        </div>
+
+        <div id="s_97" class="m s_97">القدر
+        </div>
+
+        <div id="s_98" class="m s_98">البينة
+        </div>
+
+        <div id="s_99" class="m s_99">الزلزلة
+        </div>
+
+        <div id="s_100" class="m s_100">العاديات
+        </div>
+
+        <div id="s_101" class="m s_101">القارعة
+        </div>
+
+        <div id="s_102" class="m s_102">التكاثر
+        </div>
+
+        <div id="s_103" class="m s_103">العصر
+        </div>
+
+        <div id="s_104" class="m s_104">الهمزة
+        </div>
+
+        <div id="s_105" class="m s_105">الفيل
+        </div>
+
+        <div id="s_106" class="m s_106">قريش
+        </div>
+
+        <div id="s_107" class="m s_107">الماعون
+        </div>
+
+        <div id="s_108" class="m s_108">الكوثر
+        </div>
+
+        <div id="s_109" class="m s_109">الكافرون
+        </div>
+
+        <div id="s_110" class="m s_110">النصر
+        </div>
+
+        <div id="s_111" class="m s_111">المسد
+        </div>
+
+        <div id="s_112" class="m s_112">الاخلاص
+        </div>
+
+        <div id="s_113" class="m s_113">الفلق
+        </div>
+
+        <div id="s_114" class="m s_114">الناس
+        </div>
+
+
+    
+    
+    
+
+
+      
+        
+    
+    </dive></li>
+    </ul>
+    
+    </div>
+        <button class="men" id="men"></button>
+        <div class="eldiv_elli_malhash_lazma"></div>
+        <script>
+            var sura = ''
+            var qar = ''
+            var num_men =0
+            var n_o = 0
+            var n_t = 0
+            var num = 0
+            var dic ={
+                '18':`بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ<br>الْحَمْدُ لِلَّهِ الَّذِي أَنْزَلَ عَلَى عَبْدِهِ الْكِتَابَ وَلَمْ يَجْعَلْ لَهُ عِوَجًا (1) قَيِّمًا لِيُنْذِرَ بَأْسًا شَدِيدًا مِنْ لَدُنْهُ وَيُبَشِّرَ الْمُؤْمِنِينَ الَّذِينَ يَعْمَلُونَ الصَّالِحَاتِ أَنَّ لَهُمْ أَجْرًا حَسَنًا (2) مَاكِثِينَ فِيهِ أَبَدًا (3) وَيُنْذِرَ الَّذِينَ قَالُوا اتَّخَذَ اللَّهُ وَلَدًا (4) مَا لَهُمْ بِهِ مِنْ عِلْمٍ وَلَا لِآبَائِهِمْ كَبُرَتْ كَلِمَةً تَخْرُجُ مِنْ أَفْوَاهِهِمْ إِنْ يَقُولُونَ إِلَّا كَذِبًا (5) فَلَعَلَّكَ بَاخِعٌ نَفْسَكَ عَلَى آثَارِهِمْ إِنْ لَمْ يُؤْمِنُوا بِهَذَا الْحَدِيثِ أَسَفًا (6) إِنَّا جَعَلْنَا مَا عَلَى الْأَرْضِ زِينَةً لَهَا لِنَبْلُوَهُمْ أَيُّهُمْ أَحْسَنُ عَمَلًا (7) وَإِنَّا لَجَاعِلُونَ مَا عَلَيْهَا صَعِيدًا جُرُزًا (8) أَمْ حَسِبْتَ أَنَّ أَصْحَابَ الْكَهْفِ وَالرَّقِيمِ كَانُوا مِنْ آيَاتِنَا عَجَبًا (9) إِذْ أَوَى الْفِتْيَةُ إِلَى الْكَهْفِ فَقَالُوا رَبَّنَا آتِنَا مِنْ لَدُنْكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا (10) فَضَرَبْنَا عَلَى آذَانِهِمْ فِي الْكَهْفِ سِنِينَ عَدَدًا (11) ثُمَّ بَعَثْنَاهُمْ لِنَعْلَمَ أَيُّ الْحِزْبَيْنِ أَحْصَى لِمَا لَبِثُوا أَمَدًا (12) نَحْنُ نَقُصُّ عَلَيْكَ نَبَأَهُمْ بِالْحَقِّ إِنَّهُمْ فِتْيَةٌ آمَنُوا بِرَبِّهِمْ وَزِدْنَاهُمْ هُدًى (13) وَرَبَطْنَا عَلَى قُلُوبِهِمْ إِذْ قَامُوا فَقَالُوا رَبُّنَا رَبُّ السَّمَاوَاتِ وَالْأَرْضِ لَنْ نَدْعُوَ مِنْ دُونِهِ إِلَهًا لَقَدْ قُلْنَا إِذًا شَطَطًا (14) هَؤُلَاءِ قَوْمُنَا اتَّخَذُوا مِنْ دُونِهِ آلِهَةً لَوْلَا يَأْتُونَ عَلَيْهِمْ بِسُلْطَانٍ بَيِّنٍ فَمَنْ أَظْلَمُ مِمَّنِ افْتَرَى عَلَى اللَّهِ كَذِبًا (15) وَإِذِ اعْتَزَلْتُمُوهُمْ وَمَا يَعْبُدُونَ إِلَّا اللَّهَ فَأْوُوا إِلَى الْكَهْفِ يَنْشُرْ لَكُمْ رَبُّكُمْ مِنْ رَحْمَتِهِ وَيُهَيِّئْ لَكُمْ مِنْ أَمْرِكُمْ مِرْفَقًا (16) وَتَرَى الشَّمْسَ إِذَا طَلَعَتْ تَزَاوَرُ عَنْ كَهْفِهِمْ ذَاتَ الْيَمِينِ وَإِذَا غَرَبَتْ تَقْرِضُهُمْ ذَاتَ الشِّمَالِ وَهُمْ فِي فَجْوَةٍ مِنْهُ ذَلِكَ مِنْ آيَاتِ اللَّهِ مَنْ يَهْدِ اللَّهُ فَهُوَ الْمُهْتَدِ وَمَنْ يُضْلِلْ فَلَنْ تَجِدَ لَهُ وَلِيًّا مُرْشِدًا (17) وَتَحْسَبُهُمْ أَيْقَاظًا وَهُمْ رُقُودٌ وَنُقَلِّبُهُمْ ذَاتَ الْيَمِينِ وَذَاتَ الشِّمَالِ وَكَلْبُهُمْ بَاسِطٌ ذِرَاعَيْهِ بِالْوَصِيدِ لَوِ اطَّلَعْتَ عَلَيْهِمْ لَوَلَّيْتَ مِنْهُمْ فِرَارًا وَلَمُلِئْتَ مِنْهُمْ رُعْبًا (18) وَكَذَلِكَ بَعَثْنَاهُمْ لِيَتَسَاءَلُوا بَيْنَهُمْ قَالَ قَائِلٌ مِنْهُمْ كَمْ لَبِثْتُمْ قَالُوا لَبِثْنَا يَوْمًا أَوْ بَعْضَ يَوْمٍ قَالُوا رَبُّكُمْ أَعْلَمُ بِمَا لَبِثْتُمْ فَابْعَثُوا أَحَدَكُمْ بِوَرِقِكُمْ هَذِهِ إِلَى الْمَدِينَةِ فَلْيَنْظُرْ أَيُّهَا أَزْكَى طَعَامًا فَلْيَأْتِكُمْ بِرِزْقٍ مِنْهُ وَلْيَتَلَطَّفْ وَلَا يُشْعِرَنَّ بِكُمْ أَحَدًا (19) إِنَّهُمْ إِنْ يَظْهَرُوا عَلَيْكُمْ يَرْجُمُوكُمْ أَوْ يُعِيدُوكُمْ فِي مِلَّتِهِمْ وَلَنْ تُفْلِحُوا إِذًا أَبَدًا (20) وَكَذَلِكَ أَعْثَرْنَا عَلَيْهِمْ لِيَعْلَمُوا أَنَّ وَعْدَ اللَّهِ حَقٌّ وَأَنَّ السَّاعَةَ لَا رَيْبَ فِيهَا إِذْ يَتَنَازَعُونَ بَيْنَهُمْ أَمْرَهُمْ فَقَالُوا ابْنُوا عَلَيْهِمْ بُنْيَانًا رَبُّهُمْ أَعْلَمُ بِهِمْ قَالَ الَّذِينَ غَلَبُوا عَلَى أَمْرِهِمْ لَنَتَّخِذَنَّ عَلَيْهِمْ مَسْجِدًا (21) سَيَقُولُونَ ثَلَاثَةٌ رَابِعُهُمْ كَلْبُهُمْ وَيَقُولُونَ خَمْسَةٌ سَادِسُهُمْ كَلْبُهُمْ رَجْمًا بِالْغَيْبِ وَيَقُولُونَ سَبْعَةٌ وَثَامِنُهُمْ كَلْبُهُمْ قُلْ رَبِّي أَعْلَمُ بِعِدَّتِهِمْ مَا يَعْلَمُهُمْ إِلَّا قَلِيلٌ فَلَا تُمَارِ فِيهِمْ إِلَّا مِرَاءً ظَاهِرًا وَلَا تَسْتَفْتِ فِيهِمْ مِنْهُمْ أَحَدًا (22) وَلَا تَقُولَنَّ لِشَيْءٍ إِنِّي فَاعِلٌ ذَلِكَ غَدًا (23) إِلَّا أَنْ يَشَاءَ اللَّهُ وَاذْكُرْ رَبَّكَ إِذَا نَسِيتَ وَقُلْ عَسَى أَنْ يَهْدِيَنِ رَبِّي لِأَقْرَبَ مِنْ هَذَا رَشَدًا (24) وَلَبِثُوا فِي كَهْفِهِمْ ثَلَاثَ مِائَةٍ سِنِينَ وَازْدَادُوا تِسْعًا (25) قُلِ اللَّهُ أَعْلَمُ بِمَا لَبِثُوا لَهُ غَيْبُ السَّمَاوَاتِ وَالْأَرْضِ أَبْصِرْ بِهِ وَأَسْمِعْ مَا لَهُمْ مِنْ دُونِهِ مِنْ وَلِيٍّ وَلَا يُشْرِكُ فِي حُكْمِهِ أَحَدًا (26) وَاتْلُ مَا أُوحِيَ إِلَيْكَ مِنْ كِتَابِ رَبِّكَ لَا مُبَدِّلَ لِكَلِمَاتِهِ وَلَنْ تَجِدَ مِنْ دُونِهِ مُلْتَحَدًا (27) وَاصْبِرْ نَفْسَكَ مَعَ الَّذِينَ يَدْعُونَ رَبَّهُمْ بِالْغَدَاةِ وَالْعَشِيِّ يُرِيدُونَ وَجْهَهُ وَلَا تَعْدُ عَيْنَاكَ عَنْهُمْ تُرِيدُ زِينَةَ الْحَيَاةِ الدُّنْيَا وَلَا تُطِعْ مَنْ أَغْفَلْنَا قَلْبَهُ عَنْ ذِكْرِنَا وَاتَّبَعَ هَوَاهُ وَكَانَ أَمْرُهُ فُرُطًا (28) وَقُلِ الْحَقُّ مِنْ رَبِّكُمْ فَمَنْ شَاءَ فَلْيُؤْمِنْ وَمَنْ شَاءَ فَلْيَكْفُرْ إِنَّا أَعْتَدْنَا لِلظَّالِمِينَ نَارًا أَحَاطَ بِهِمْ سُرَادِقُهَا وَإِنْ يَسْتَغِيثُوا يُغَاثُوا بِمَاءٍ كَالْمُهْلِ يَشْوِي الْوُجُوهَ بِئْسَ الشَّرَابُ وَسَاءَتْ مُرْتَفَقًا (29) إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ إِنَّا لَا نُضِيعُ أَجْرَ مَنْ أَحْسَنَ عَمَلًا (30) أُولَئِكَ لَهُمْ جَنَّاتُ عَدْنٍ تَجْرِي مِنْ تَحْتِهِمُ الْأَنْهَارُ يُحَلَّوْنَ فِيهَا مِنْ أَسَاوِرَ مِنْ ذَهَبٍ وَيَلْبَسُونَ ثِيَابًا خُضْرًا مِنْ سُنْدُسٍ وَإِسْتَبْرَقٍ مُتَّكِئِينَ فِيهَا عَلَى الْأَرَائِكِ نِعْمَ الثَّوَابُ وَحَسُنَتْ مُرْتَفَقًا (31) وَاضْرِبْ لَهُمْ مَثَلًا رَجُلَيْنِ جَعَلْنَا لِأَحَدِهِمَا جَنَّتَيْنِ مِنْ أَعْنَابٍ وَحَفَفْنَاهُمَا بِنَخْلٍ وَجَعَلْنَا بَيْنَهُمَا زَرْعًا (32) كِلْتَا الْجَنَّتَيْنِ آتَتْ أُكُلَهَا وَلَمْ تَظْلِمْ مِنْهُ شَيْئًا وَفَجَّرْنَا خِلَالَهُمَا نَهَرًا (33) وَكَانَ لَهُ ثَمَرٌ فَقَالَ لِصَاحِبِهِ وَهُوَ يُحَاوِرُهُ أَنَا أَكْثَرُ مِنْكَ مَالًا وَأَعَزُّ نَفَرًا (34) وَدَخَلَ جَنَّتَهُ وَهُوَ ظَالِمٌ لِنَفْسِهِ قَالَ مَا أَظُنُّ أَنْ تَبِيدَ هَذِهِ أَبَدًا (35) وَمَا أَظُنُّ السَّاعَةَ قَائِمَةً وَلَئِنْ رُدِدْتُ إِلَى رَبِّي لَأَجِدَنَّ خَيْرًا مِنْهَا مُنْقَلَبًا (36) قَالَ لَهُ صَاحِبُهُ وَهُوَ يُحَاوِرُهُ أَكَفَرْتَ بِالَّذِي خَلَقَكَ مِنْ تُرَابٍ ثُمَّ مِنْ نُطْفَةٍ ثُمَّ سَوَّاكَ رَجُلًا (37) لَكِنَّا هُوَ اللَّهُ رَبِّي وَلَا أُشْرِكُ بِرَبِّي أَحَدًا (38) وَلَوْلَا إِذْ دَخَلْتَ جَنَّتَكَ قُلْتَ مَا شَاءَ اللَّهُ لَا قُوَّةَ إِلَّا بِاللَّهِ إِنْ تَرَنِ أَنَا أَقَلَّ مِنْكَ مَالًا وَوَلَدًا (39) فَعَسَى رَبِّي أَنْ يُؤْتِيَنِ خَيْرًا مِنْ جَنَّتِكَ وَيُرْسِلَ عَلَيْهَا حُسْبَانًا مِنَ السَّمَاءِ فَتُصْبِحَ صَعِيدًا زَلَقًا (40) أَوْ يُصْبِحَ مَاؤُهَا غَوْرًا فَلَنْ تَسْتَطِيعَ لَهُ طَلَبًا (41) وَأُحِيطَ بِثَمَرِهِ فَأَصْبَحَ يُقَلِّبُ كَفَّيْهِ عَلَى مَا أَنْفَقَ فِيهَا وَهِيَ خَاوِيَةٌ عَلَى عُرُوشِهَا وَيَقُولُ يَا لَيْتَنِي لَمْ أُشْرِكْ بِرَبِّي أَحَدًا (42) وَلَمْ تَكُنْ لَهُ فِئَةٌ يَنْصُرُونَهُ مِنْ دُونِ اللَّهِ وَمَا كَانَ مُنْتَصِرًا (43) هُنَالِكَ الْوَلَايَةُ لِلَّهِ الْحَقِّ هُوَ خَيْرٌ ثَوَابًا وَخَيْرٌ عُقْبًا (44) وَاضْرِبْ لَهُمْ مَثَلَ الْحَيَاةِ الدُّنْيَا كَمَاءٍ أَنْزَلْنَاهُ مِنَ السَّمَاءِ فَاخْتَلَطَ بِهِ نَبَاتُ الْأَرْضِ فَأَصْبَحَ هَشِيمًا تَذْرُوهُ الرِّيَاحُ وَكَانَ اللَّهُ عَلَى كُلِّ شَيْءٍ مُقْتَدِرًا (45) الْمَالُ وَالْبَنُونَ زِينَةُ الْحَيَاةِ الدُّنْيَا وَالْبَاقِيَاتُ الصَّالِحَاتُ خَيْرٌ عِنْدَ رَبِّكَ ثَوَابًا وَخَيْرٌ أَمَلًا (46) وَيَوْمَ نُسَيِّرُ الْجِبَالَ وَتَرَى الْأَرْضَ بَارِزَةً وَحَشَرْنَاهُمْ فَلَمْ نُغَادِرْ مِنْهُمْ أَحَدًا (47) وَعُرِضُوا عَلَى رَبِّكَ صَفًّا لَقَدْ جِئْتُمُونَا كَمَا خَلَقْنَاكُمْ أَوَّلَ مَرَّةٍ بَلْ زَعَمْتُمْ أَلَّنْ نَجْعَلَ لَكُمْ مَوْعِدًا (48) وَوُضِعَ الْكِتَابُ فَتَرَى الْمُجْرِمِينَ مُشْفِقِينَ مِمَّا فِيهِ وَيَقُولُونَ يَا وَيْلَتَنَا مَالِ هَذَا الْكِتَابِ لَا يُغَادِرُ صَغِيرَةً وَلَا كَبِيرَةً إِلَّا أَحْصَاهَا وَوَجَدُوا مَا عَمِلُوا حَاضِرًا وَلَا يَظْلِمُ رَبُّكَ أَحَدًا (49) وَإِذْ قُلْنَا لِلْمَلَائِكَةِ اسْجُدُوا لِآدَمَ فَسَجَدُوا إِلَّا إِبْلِيسَ كَانَ مِنَ الْجِنِّ فَفَسَقَ عَنْ أَمْرِ رَبِّهِ أَفَتَتَّخِذُونَهُ وَذُرِّيَّتَهُ أَوْلِيَاءَ مِنْ دُونِي وَهُمْ لَكُمْ عَدُوٌّ بِئْسَ لِلظَّالِمِينَ بَدَلًا (50) مَا أَشْهَدْتُهُمْ خَلْقَ السَّمَاوَاتِ وَالْأَرْضِ وَلَا خَلْقَ أَنْفُسِهِمْ وَمَا كُنْتُ مُتَّخِذَ الْمُضِلِّينَ عَضُدًا (51) وَيَوْمَ يَقُولُ نَادُوا شُرَكَائِيَ الَّذِينَ زَعَمْتُمْ فَدَعَوْهُمْ فَلَمْ يَسْتَجِيبُوا لَهُمْ وَجَعَلْنَا بَيْنَهُمْ مَوْبِقًا (52) وَرَأَى الْمُجْرِمُونَ النَّارَ فَظَنُّوا أَنَّهُمْ مُوَاقِعُوهَا وَلَمْ يَجِدُوا عَنْهَا مَصْرِفًا (53) وَلَقَدْ صَرَّفْنَا فِي هَذَا الْقُرْآنِ لِلنَّاسِ مِنْ كُلِّ مَثَلٍ وَكَانَ الْإِنْسَانُ أَكْثَرَ شَيْءٍ جَدَلًا (54) وَمَا مَنَعَ النَّاسَ أَنْ يُؤْمِنُوا إِذْ جَاءَهُمُ الْهُدَى وَيَسْتَغْفِرُوا رَبَّهُمْ إِلَّا أَنْ تَأْتِيَهُمْ سُنَّةُ الْأَوَّلِينَ أَوْ يَأْتِيَهُمُ الْعَذَابُ قُبُلًا (55) وَمَا نُرْسِلُ الْمُرْسَلِينَ إِلَّا مُبَشِّرِينَ وَمُنْذِرِينَ وَيُجَادِلُ الَّذِينَ كَفَرُوا بِالْبَاطِلِ لِيُدْحِضُوا بِهِ الْحَقَّ وَاتَّخَذُوا آيَاتِي وَمَا أُنْذِرُوا هُزُوًا (56) وَمَنْ أَظْلَمُ مِمَّنْ ذُكِّرَ بِآيَاتِ رَبِّهِ فَأَعْرَضَ عَنْهَا وَنَسِيَ مَا قَدَّمَتْ يَدَاهُ إِنَّا جَعَلْنَا عَلَى قُلُوبِهِمْ أَكِنَّةً أَنْ يَفْقَهُوهُ وَفِي آذَانِهِمْ وَقْرًا وَإِنْ تَدْعُهُمْ إِلَى الْهُدَى فَلَنْ يَهْتَدُوا إِذًا أَبَدًا (57) وَرَبُّكَ الْغَفُورُ ذُو الرَّحْمَةِ لَوْ يُؤَاخِذُهُمْ بِمَا كَسَبُوا لَعَجَّلَ لَهُمُ الْعَذَابَ بَلْ لَهُمْ مَوْعِدٌ لَنْ يَجِدُوا مِنْ دُونِهِ مَوْئِلًا (58) وَتِلْكَ الْقُرَى أَهْلَكْنَاهُمْ لَمَّا ظَلَمُوا وَجَعَلْنَا لِمَهْلِكِهِمْ مَوْعِدًا (59) وَإِذْ قَالَ مُوسَى لِفَتَاهُ لَا أَبْرَحُ حَتَّى أَبْلُغَ مَجْمَعَ الْبَحْرَيْنِ أَوْ أَمْضِيَ حُقُبًا (60) فَلَمَّا بَلَغَا مَجْمَعَ بَيْنِهِمَا نَسِيَا حُوتَهُمَا فَاتَّخَذَ سَبِيلَهُ فِي الْبَحْرِ سَرَبًا (61) فَلَمَّا جَاوَزَا قَالَ لِفَتَاهُ آتِنَا غَدَاءَنَا لَقَدْ لَقِينَا مِنْ سَفَرِنَا هَذَا نَصَبًا (62) قَالَ أَرَأَيْتَ إِذْ أَوَيْنَا إِلَى الصَّخْرَةِ فَإِنِّي نَسِيتُ الْحُوتَ وَمَا أَنْسَانِيهُ إِلَّا الشَّيْطَانُ أَنْ أَذْكُرَهُ وَاتَّخَذَ سَبِيلَهُ فِي الْبَحْرِ عَجَبًا (63) قَالَ ذَلِكَ مَا كُنَّا نَبْغِ فَارْتَدَّا عَلَى آثَارِهِمَا قَصَصًا (64) فَوَجَدَا عَبْدًا مِنْ عِبَادِنَا آتَيْنَاهُ رَحْمَةً مِنْ عِنْدِنَا وَعَلَّمْنَاهُ مِنْ لَدُنَّا عِلْمًا (65) قَالَ لَهُ مُوسَى هَلْ أَتَّبِعُكَ عَلَى أَنْ تُعَلِّمَنِ مِمَّا عُلِّمْتَ رُشْدًا (66) قَالَ إِنَّكَ لَنْ تَسْتَطِيعَ مَعِيَ صَبْرًا (67) وَكَيْفَ تَصْبِرُ عَلَى مَا لَمْ تُحِطْ بِهِ خُبْرًا (68) قَالَ سَتَجِدُنِي إِنْ شَاءَ اللَّهُ صَابِرًا وَلَا أَعْصِي لَكَ أَمْرًا (69) قَالَ فَإِنِ اتَّبَعْتَنِي فَلَا تَسْأَلْنِي عَنْ شَيْءٍ حَتَّى أُحْدِثَ لَكَ مِنْهُ ذِكْرًا (70) فَانْطَلَقَا حَتَّى إِذَا رَكِبَا فِي السَّفِينَةِ خَرَقَهَا قَالَ أَخَرَقْتَهَا لِتُغْرِقَ أَهْلَهَا لَقَدْ جِئْتَ شَيْئًا إِمْرًا (71) قَالَ أَلَمْ أَقُلْ إِنَّكَ لَنْ تَسْتَطِيعَ مَعِيَ صَبْرًا (72) قَالَ لَا تُؤَاخِذْنِي بِمَا نَسِيتُ وَلَا تُرْهِقْنِي مِنْ أَمْرِي عُسْرًا (73) فَانْطَلَقَا حَتَّى إِذَا لَقِيَا غُلَامًا فَقَتَلَهُ قَالَ أَقَتَلْتَ نَفْسًا زَكِيَّةً بِغَيْرِ نَفْسٍ لَقَدْ جِئْتَ شَيْئًا نُكْرًا (74) قَالَ أَلَمْ أَقُلْ لَكَ إِنَّكَ لَنْ تَسْتَطِيعَ مَعِيَ صَبْرًا (75) قَالَ إِنْ سَأَلْتُكَ عَنْ شَيْءٍ بَعْدَهَا فَلَا تُصَاحِبْنِي قَدْ بَلَغْتَ مِنْ لَدُنِّي عُذْرًا (76) فَانْطَلَقَا حَتَّى إِذَا أَتَيَا أَهْلَ قَرْيَةٍ اسْتَطْعَمَا أَهْلَهَا فَأَبَوْا أَنْ يُضَيِّفُوهُمَا فَوَجَدَا فِيهَا جِدَارًا يُرِيدُ أَنْ يَنْقَضَّ فَأَقَامَهُ قَالَ لَوْ شِئْتَ لَاتَّخَذْتَ عَلَيْهِ أَجْرًا (77) قَالَ هَذَا فِرَاقُ بَيْنِي وَبَيْنِكَ سَأُنَبِّئُكَ بِتَأْوِيلِ مَا لَمْ تَسْتَطِعْ عَلَيْهِ صَبْرًا (78) أَمَّا السَّفِينَةُ فَكَانَتْ لِمَسَاكِينَ يَعْمَلُونَ فِي الْبَحْرِ فَأَرَدْتُ أَنْ أَعِيبَهَا وَكَانَ وَرَاءَهُمْ مَلِكٌ يَأْخُذُ كُلَّ سَفِينَةٍ غَصْبًا (79) وَأَمَّا الْغُلَامُ فَكَانَ أَبَوَاهُ مُؤْمِنَيْنِ فَخَشِينَا أَنْ يُرْهِقَهُمَا طُغْيَانًا وَكُفْرًا (80) فَأَرَدْنَا أَنْ يُبْدِلَهُمَا رَبُّهُمَا خَيْرًا مِنْهُ زَكَاةً وَأَقْرَبَ رُحْمًا (81) وَأَمَّا الْجِدَارُ فَكَانَ لِغُلَامَيْنِ يَتِيمَيْنِ فِي الْمَدِينَةِ وَكَانَ تَحْتَهُ كَنْزٌ لَهُمَا وَكَانَ أَبُوهُمَا صَالِحًا فَأَرَادَ رَبُّكَ أَنْ يَبْلُغَا أَشُدَّهُمَا وَيَسْتَخْرِجَا كَنْزَهُمَا رَحْمَةً مِنْ رَبِّكَ وَمَا فَعَلْتُهُ عَنْ أَمْرِي ذَلِكَ تَأْوِيلُ مَا لَمْ تَسْطِعْ عَلَيْهِ صَبْرًا (82) وَيَسْأَلُونَكَ عَنْ ذِي الْقَرْنَيْنِ قُلْ سَأَتْلُو عَلَيْكُمْ مِنْهُ ذِكْرًا (83) إِنَّا مَكَّنَّا لَهُ فِي الْأَرْضِ وَآتَيْنَاهُ مِنْ كُلِّ شَيْءٍ سَبَبًا (84) فَأَتْبَعَ سَبَبًا (85) حَتَّى إِذَا بَلَغَ مَغْرِبَ الشَّمْسِ وَجَدَهَا تَغْرُبُ فِي عَيْنٍ حَمِئَةٍ وَوَجَدَ عِنْدَهَا قَوْمًا قُلْنَا يَا ذَا الْقَرْنَيْنِ إِمَّا أَنْ تُعَذِّبَ وَإِمَّا أَنْ تَتَّخِذَ فِيهِمْ حُسْنًا (86) قَالَ أَمَّا مَنْ ظَلَمَ فَسَوْفَ نُعَذِّبُهُ ثُمَّ يُرَدُّ إِلَى رَبِّهِ فَيُعَذِّبُهُ عَذَابًا نُكْرًا (87) وَأَمَّا مَنْ آمَنَ وَعَمِلَ صَالِحًا فَلَهُ جَزَاءً الْحُسْنَى وَسَنَقُولُ لَهُ مِنْ أَمْرِنَا يُسْرًا (88) ثُمَّ أَتْبَعَ سَبَبًا (89) حَتَّى إِذَا بَلَغَ مَطْلِعَ الشَّمْسِ وَجَدَهَا تَطْلُعُ عَلَى قَوْمٍ لَمْ نَجْعَلْ لَهُمْ مِنْ دُونِهَا سِتْرًا (90) كَذَلِكَ وَقَدْ أَحَطْنَا بِمَا لَدَيْهِ خُبْرًا (91) ثُمَّ أَتْبَعَ سَبَبًا (92) حَتَّى إِذَا بَلَغَ بَيْنَ السَّدَّيْنِ وَجَدَ مِنْ دُونِهِمَا قَوْمًا لَا يَكَادُونَ يَفْقَهُونَ قَوْلًا (93) قَالُوا يَا ذَا الْقَرْنَيْنِ إِنَّ يَأْجُوجَ وَمَأْجُوجَ مُفْسِدُونَ فِي الْأَرْضِ فَهَلْ نَجْعَلُ لَكَ خَرْجًا عَلَى أَنْ تَجْعَلَ بَيْنَنَا وَبَيْنَهُمْ سَدًّا (94) قَالَ مَا مَكَّنِّي فِيهِ رَبِّي خَيْرٌ فَأَعِينُونِي بِقُوَّةٍ أَجْعَلْ بَيْنَكُمْ وَبَيْنَهُمْ رَدْمًا (95) آتُونِي زُبَرَ الْحَدِيدِ حَتَّى إِذَا سَاوَى بَيْنَ الصَّدَفَيْنِ قَالَ انْفُخُوا حَتَّى إِذَا جَعَلَهُ نَارًا قَالَ آتُونِي أُفْرِغْ عَلَيْهِ قِطْرًا (96) فَمَا اسْطَاعُوا أَنْ يَظْهَرُوهُ وَمَا اسْتَطَاعُوا لَهُ نَقْبًا (97) قَالَ هَذَا رَحْمَةٌ مِنْ رَبِّي فَإِذَا جَاءَ وَعْدُ رَبِّي جَعَلَهُ دَكَّاءَ وَكَانَ وَعْدُ رَبِّي حَقًّا (98) وَتَرَكْنَا بَعْضَهُمْ يَوْمَئِذٍ يَمُوجُ فِي بَعْضٍ وَنُفِخَ فِي الصُّورِ فَجَمَعْنَاهُمْ جَمْعًا (99) وَعَرَضْنَا جَهَنَّمَ يَوْمَئِذٍ لِلْكَافِرِينَ عَرْضًا (100) الَّذِينَ كَانَتْ أَعْيُنُهُمْ فِي غِطَاءٍ عَنْ ذِكْرِي وَكَانُوا لَا يَسْتَطِيعُونَ سَمْعًا (101) أَفَحَسِبَ الَّذِينَ كَفَرُوا أَنْ يَتَّخِذُوا عِبَادِي مِنْ دُونِي أَوْلِيَاءَ إِنَّا أَعْتَدْنَا جَهَنَّمَ لِلْكَافِرِينَ نُزُلًا (102) قُلْ هَلْ نُنَبِّئُكُمْ بِالْأَخْسَرِينَ أَعْمَالًا (103) الَّذِينَ ضَلَّ سَعْيُهُمْ فِي الْحَيَاةِ الدُّنْيَا وَهُمْ يَحْسَبُونَ أَنَّهُمْ يُحْسِنُونَ صُنْعًا (104) أُولَئِكَ الَّذِينَ كَفَرُوا بِآيَاتِ رَبِّهِمْ وَلِقَائِهِ فَحَبِطَتْ أَعْمَالُهُمْ فَلَا نُقِيمُ لَهُمْ يَوْمَ الْقِيَامَةِ وَزْنًا (105) ذَلِكَ جَزَاؤُهُمْ جَهَنَّمُ بِمَا كَفَرُوا وَاتَّخَذُوا آيَاتِي وَرُسُلِي هُزُوًا (106) إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ كَانَتْ لَهُمْ جَنَّاتُ الْفِرْدَوْسِ نُزُلًا (107) خَالِدِينَ فِيهَا لَا يَبْغُونَ عَنْهَا حِوَلًا (108) قُلْ لَوْ كَانَ الْبَحْرُ مِدَادًا لِكَلِمَاتِ رَبِّي لَنَفِدَ الْبَحْرُ قَبْلَ أَنْ تَنْفَدَ كَلِمَاتُ رَبِّي وَلَوْ جِئْنَا بِمِثْلِهِ مَدَدًا (109) قُلْ إِنَّمَا أَنَا بَشَرٌ مِثْلُكُمْ يُوحَى إِلَيَّ أَنَّمَا إِلَهُكُمْ إِلَهٌ وَاحِدٌ فَمَنْ كَانَ يَرْجُو لِقَاءَ رَبِّهِ فَلْيَعْمَلْ عَمَلًا صَالِحًا وَلَا يُشْرِكْ بِعِبَادَةِ رَبِّهِ أَحَدًا (110)`
+            };
+            var quraa = {
+                'yas_dos':'فضيلة الشيخ ياسر الدوسرى'
+            }
+            var images={
+                'yas_dos':'yas_dos.jpg'
+            }
+            
+
+            function funny(name,st) {
+            var ele_list = document.getElementsByClassName(name)
+            for (let index = 0; index < ele_list.length; index++) {
+                var element_id = ele_list[index].id;
+                document.getElementById(element_id).style = st
+                
+            }
+
+        }
+        document.getElementById('men').addEventListener("click",fun=>{
+            if (num_men == 0) {
+                document.getElementById('st_sheet').innerHTML=   document.getElementById('st_sheet').innerHTML.replace('.menu * , .menu ,.eldiv_elli_malhash_lazma{animation: 0s disapperance forwards ;}','.menu * , .menu ,.eldiv_elli_malhash_lazma{animation: 0s disapperance forwards ;animation-direction: reverse;}')
+        num_men = 1
+            }else{
+                document.getElementById('st_sheet').innerHTML=   document.getElementById('st_sheet').innerHTML.replace('.menu * , .menu ,.eldiv_elli_malhash_lazma{animation: 0s disapperance forwards ;animation-direction: reverse;}','.menu * , .menu ,.eldiv_elli_malhash_lazma{animation: 0s disapperance forwards ;}')
+
+        num_men = 0
+            }
+            
+        })
+        for (let index = 0; index < document.getElementsByClassName('m').length; index++) {
+            document.getElementById(document.getElementsByClassName('m')[index].id).addEventListener("click",fun=>{
+                document.getElementById('sura_n').innerText = document.getElementById(document.getElementsByClassName('m')[index].id).innerText
+                document.getElementById('sura').innerHTML =dic[document.getElementsByClassName('m')[index].id.replace('s_','')]
+                sura = document.getElementsByClassName('m')[index].id.replace('s_','')
+                document.getElementById('audio').src = document.getElementsByClassName('m')[index].id.replace('s_','')+'_'+qar+'.mp3'
+            })
+            
+        }
+
+        for (let index = 0; index < document.getElementsByClassName('b').length; index++) {
+            document.getElementById(document.getElementsByClassName('b')[index].id).addEventListener("click",fun=>{
+                document.getElementById('inp').innerText =quraa[document.getElementsByClassName('b')[index].id]
+                document.getElementById('audio').src = sura +'_'+ document.getElementsByClassName('b')[index].id+'.mp3'
+                qar = document.getElementsByClassName('b')[index].id
+            })
+            
+        }
+          
+        
+              
+             
+
+                //else{
+                 //   for (let index = 0; index < document.getElementsByClassName('b').length; index++) {
+              
+            //  document.getElementById(document.getElementsByClassName('b')[index].id).style.opacity = '0'                
+          //}
+
+          //for (let index = 0; index < document.getElementsByClassName('l').length; index++) {
+            
+            //document.getElementById(document.getElementsByClassName('l')[index].id).style.fontSize = '0rem' 
+            //document.getElementById(document.getElementsByClassName('l')[index].id).style.borderTopRightRadius = '0rem'
+            //document.getElementById(document.getElementsByClassName('l')[index].id).style.borderBottomLeftRadius = '0rem'              
+        //}
+        //for (let index = 0; index < document.getElementsByClassName('l').length; index++) {
+            
+           
+          //  document.getElementById(document.getElementsByClassName('d')[index].id).style.width = '0rem'
+            //document.getElementById(document.getElementsByClassName('d')[index].id).style.height = '0rem'       
+        //}
+        
+              
+             
+
+//document.getElementById('dd_o').style.width = '0px'
+  //        document.getElementById('dd_o').style.height = '0px'
+    //                n_o = 0
+      //          }
+            
+           // })
+
+        
+        //else{
+                   // n_t = 0
+                    //funny('m',` position: relative;
+                //opacity: 0;
+            //width: 0rem;
+            //height: 0rem;
+            //box-sizing: content-box;
+            //font-size:0rem ;
+            //color:darkslategrey;
+            //background-color: goldenrod;
+            //border-top-right-radius: 0rem;
+            //border-bottom-left-radius: 0rem;
+            //text-align: center;`)
+              //  document.getElementById('dd_t').style.width = '0px'
+            //document.getElementById('dd_t').style.height = '0px'
+              //  }
+            
+            //})
+           
+            //document.getElementById('sura').innerHTML = dic['cahf']
+           // document.getElementById('ser2').addEventListener("click",fun =>{
+           //     document.getElementById('sura').innerHTML = dic[names[document.getElementById('sura_name').value]]
+          //  })
+           // document.getElementById('men').addEventListener("click",fun =>{
+            //    if (num == 0) {
+            //        document.getElementById('menu').style.width = '70%'
+             //       num = 1
+             //   }else{
+              //      document.getElementById('menu').style.width = '0%'
+              //      num = 0
+              //  }
+               
+                
+          //  })
+          //  document.getElementById('search').addEventListener("click",fun =>{
+           //     document.getElementById('ph').style.backgroundImage = 'url('+images[document.getElementById('inp').value]+')'
+         //       document.getElementById('audio').src = names[document.getElementById('sura_name').value]+'_'+quraa[document.getElementById('inp').value]+'.mp3'
+         //   })
+           // document.getElementById('home').addEventListener("click",fun =>{
+            //    window.open("index.html", "_blank")
+           // })
+
+        </script>
+</body>
+</html>
